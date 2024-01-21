@@ -13,25 +13,29 @@ import { ContaService } from './services/conta.service';
 
 import { NarikCustomValidatorsModule } from '@narik/custom-validators';
 import { ContaGuard } from './services/conta.guard';
+import { InputComponent } from "../components/input/input.component";
+import { ButtonComponent } from "../components/button/button.component";
 
 @NgModule({
-  declarations: [
-    ContaAppComponent,
-    CadastroComponent, 
-    LoginComponent
-  ],
-  imports: [
-    CommonModule,
-    RouterModule,
-    ContaRoutingModule,
-    FormsModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-    NarikCustomValidatorsModule
-  ],
-  providers: [
-    ContaService,
-    ContaGuard
-  ]
+    declarations: [
+        ContaAppComponent,
+        CadastroComponent,
+        LoginComponent
+    ],
+    providers: [
+        ContaService,
+        ContaGuard
+    ],
+    imports: [
+        CommonModule,
+        RouterModule,
+        ContaRoutingModule,
+        FormsModule,
+        ReactiveFormsModule,
+        HttpClientModule,
+        NarikCustomValidatorsModule,
+        InputComponent,
+        ButtonComponent
+    ]
 })
 export class ContaModule { }

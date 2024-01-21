@@ -11,6 +11,7 @@ import { AppComponent } from './app.component';
 import { NavegacaoModule } from './navegacao/navegacao.module';
 
 import { ErrorInterceptor } from './services/error.handler.service';
+import { InputComponent } from './components/input/input.component';
 
 export const httpInterceptorProviders = [
   { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
@@ -27,7 +28,8 @@ export const httpInterceptorProviders = [
     NgbModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
-    HttpClientModule
+    HttpClientModule,
+    InputComponent
   ],
   providers: [
     httpInterceptorProviders

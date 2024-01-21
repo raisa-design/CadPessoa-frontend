@@ -40,3 +40,22 @@
         </div>
     </form>
 </div>
+
+
+<section class="w-full h-screen flex justify-center items-center">
+    <div class="flex gap-x-10 bg-stone-100 p-6 rounded-lg shadow-lg md:w-5/12 2xl:w-3/12  lg:w-5/12 w-11/12 flex-col-reverse md:flex-row">
+        <div class="flex flex-col gap-4 w-full md:w-1/2">
+            <h1 class="text-3xl">
+                Login de usuário
+            </h1>
+            <app-input label="Email" name="email" placeholder="Insira seu email" />
+            <app-input type="password" label="Senha" name="password" placeholder="Insira sua senha"/>
+            <div class="flex justify-center items-center">
+                <app-button text="Login" />
+            </div>
+        </div>
+        <div class="flex justify-center items-center">
+            <img  src="/assets/login.png" alt="" height="200px" width="200px">
+        </div>
+    </div>
+</section>  
