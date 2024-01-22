@@ -37,11 +37,6 @@ export class CadastroComponent extends FormBaseComponent implements OnInit, Afte
       password: {
         required: 'Informe a senha',
         rangeLength: 'A senha deve possuir entre 6 e 15 caracteres'
-      },
-      confirmPassword: {
-        required: 'Informe a senha novamente',
-        rangeLength: 'A senha deve possuir entre 6 e 15 caracteres',
-        equalTo: 'As senhas não conferem'
       }
     };
 
@@ -56,7 +51,7 @@ export class CadastroComponent extends FormBaseComponent implements OnInit, Afte
     this.cadastroForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       senha: senha,
-      senhaConfirmacao: senhaConfirm
+      senhaConfirmacao: senha
     });
   }
 

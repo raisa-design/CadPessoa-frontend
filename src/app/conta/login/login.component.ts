@@ -60,15 +60,16 @@ export class LoginComponent extends FormBaseComponent implements OnInit {
     super.configurarValidacaoFormularioBase(this.formInputElements, this.loginForm);
   }
 
-  login() {
+  async login() {
     if (this.loginForm.dirty && this.loginForm.valid) {
-      this.usuario = Object.assign({}, this.usuario, this.loginForm.value);
-
-      this.contaService.login(this.usuario)
-      .subscribe(
-          sucesso => {this.processarSucesso(sucesso)},
-          falha => {this.processarFalha(falha)}
-      );
+      this.usuario = { ...this.usuario, ...this.loginForm.value };
+  
+      try {
+        const sucesso = await this.contaService.login(this.usuario).toPromise();
+        this.processarSucesso(sucesso);
+      } catch (falha) {
+        this.processarFalha(falha);
+      }
     }
   }
 

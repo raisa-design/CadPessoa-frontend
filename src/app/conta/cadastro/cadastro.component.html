@@ -13,40 +13,102 @@
             </ul>
         </div>
 
-        <div class="form-group">
-            <label class="col-md-2 control-label">E-mail</label>
-            <div class="col-md-10">
-                <input class="form-control" id="email" type="text" placeholder="E-mail (requerido)" formControlName="email" [ngClass]="{'is-invalid': displayMessage.email }" />
-                <span class="text-danger" *ngIf="displayMessage.email">
-                                <p [innerHTML]="displayMessage.email"></p>
-                            </span>
+        <section class="w-full h-screen flex justify-center items-center">
+            <div class="flex gap-x-10 bg-stone-100 p-6 rounded-lg shadow-lg max-w-screen-md sm:w-8/12 md:w-9/12 2xl:w-5/12  lg:w-8/12 w-11/12 flex-col-reverse md:flex-row">
+                <div class="flex flex-col gap-4 w-full md:w-9/12">
+                    <h1 class="text-3xl hidden md:block"> 
+                        Cadastrar Usuário
+                    </h1>
+                    <div class="flex gap-2"> 
+                        <app-input label="Nome de usuário" name="username" placeholder="Insira seu nome" />
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">E-mail</label>
+                            <div class="col-md-10">
+                                <input class="form-control" id="email" type="text" placeholder="E-mail (requerido)" formControlName="email" [ngClass]="{'is-invalid': displayMessage.email }" />
+                                <span class="text-danger" *ngIf="displayMessage.email">
+                                                <p [innerHTML]="displayMessage.email"></p>
+                                            </span>
+                            </div>
+                        </div>
+                    </div>  
+                    <div class="flex gap-2">
+                        <app-input label="Telefone" name="phone" placeholder="Insira seu telefone" />
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">Senha</label>
+                            <div class="col-md-10">
+                                <input class="form-control" id="senha" type="password" placeholder="Senha (requerido)" formControlName="senha" [ngClass]="{'is-invalid': displayMessage.password }" />
+                                <span class="text-danger" *ngIf="displayMessage.password">
+                                                <p [innerHTML]="displayMessage.password"></p>
+                                            </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex justify-center items-center">
+                        <app-button  text="Cadastrar Usuário"/>
+                    </div>
+                </div>  
+                <div class="flex flex-col justify-center items-center gap-2 mb-4">
+                    <h1 class="text-3xl block md:hidden"> 
+                        Cadastrar Usuário
+                    </h1>
+                    
+                    <div class="form-group">
+                        <div class="col-md-4 col-md-offset-2">
+                            <span><button class="btn btn-success" id="Registrar" [disabled]="!cadastroForm.valid" type="submit">Registrar</button></span>
+                        </div>
+                    </div>
+                </div> 
             </div>
-        </div>
-
-        <div class="form-group">
-            <label class="col-md-2 control-label">Senha</label>
-            <div class="col-md-10">
-                <input class="form-control" id="senha" type="password" placeholder="Senha (requerido)" formControlName="senha" [ngClass]="{'is-invalid': displayMessage.password }" />
-                <span class="text-danger" *ngIf="displayMessage.password">
-                                <p [innerHTML]="displayMessage.password"></p>
-                            </span>
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label class="col-md-2 control-label">Confirme a Senha</label>
-            <div class="col-md-10">
-                <input class="form-control" id="senhaConfirmacao" type="password" placeholder="Confirme a Senha (requerido)" formControlName="senhaConfirmacao" [ngClass]="{'is-invalid': displayMessage.confirmPassword }" />
-                <span class="text-danger" *ngIf="displayMessage.confirmPassword">
-                                <p [innerHTML]="displayMessage.confirmPassword"></p>
-                            </span>
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-4 col-md-offset-2">
-                <span><button class="btn btn-success" id="Registrar" [disabled]="!cadastroForm.valid" type="submit">Registrar</button></span>
-            </div>
-        </div>
+        </section>  
     </form>
 </div>
+
+
+<!-- 
+<section class="w-full h-screen flex justify-center items-center">
+    <div class="flex gap-x-10 bg-stone-100 p-6 rounded-lg shadow-lg max-w-screen-md sm:w-8/12 md:w-9/12 2xl:w-5/12  lg:w-8/12 w-11/12 flex-col-reverse md:flex-row">
+        <div class="flex flex-col gap-4 w-full md:w-9/12">
+            <h1 class="text-3xl hidden md:block"> 
+                Cadastrar Usuário
+            </h1>
+            <div class="flex gap-2"> 
+                <app-input label="Nome de usuário" name="username" placeholder="Insira seu nome" />
+                <div class="form-group">
+                    <label class="col-md-2 control-label">E-mail</label>
+                    <div class="col-md-10">
+                        <input class="form-control" id="email" type="text" placeholder="E-mail (requerido)" formControlName="email" [ngClass]="{'is-invalid': displayMessage.email }" />
+                        <span class="text-danger" *ngIf="displayMessage.email">
+                                        <p [innerHTML]="displayMessage.email"></p>
+                                    </span>
+                    </div>
+                </div>
+            </div>  
+            <div class="flex gap-2">
+                <app-input label="Telefone" name="phone" placeholder="Insira seu telefone" />
+                <div class="form-group">
+                    <label class="col-md-2 control-label">Senha</label>
+                    <div class="col-md-10">
+                        <input class="form-control" id="senha" type="password" placeholder="Senha (requerido)" formControlName="senha" [ngClass]="{'is-invalid': displayMessage.password }" />
+                        <span class="text-danger" *ngIf="displayMessage.password">
+                                        <p [innerHTML]="displayMessage.password"></p>
+                                    </span>
+                    </div>
+                </div>
+            </div>
+            <div class="flex justify-center items-center">
+                <app-button  text="Cadastrar Usuário"/>
+            </div>
+        </div>  
+        <div class="flex flex-col justify-center items-center gap-2 mb-4">
+            <h1 class="text-3xl block md:hidden"> 
+                Cadastrar Usuário
+            </h1>
+            
+            <div class="form-group">
+                <div class="col-md-4 col-md-offset-2">
+                    <span><button class="btn btn-success" id="Registrar" [disabled]="!cadastroForm.valid" type="submit">Registrar</button></span>
+                </div>
+            </div>
+        </div> 
+    </div>
+</section>   -->

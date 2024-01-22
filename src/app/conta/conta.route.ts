@@ -21,4 +21,4 @@ const contaRouterConfig: Routes = [
     ],
     exports: [RouterModule]
 })
-export class ContaRoutingModule { }
+export class ContaRoutingModule { } 

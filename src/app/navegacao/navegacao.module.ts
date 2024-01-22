@@ -10,6 +10,9 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MenuLoginComponent } from './menu-login/menu-login.component';
 import { AcessoNegadoComponent } from './acesso-negado/acesso-negado.component';
+import { InputComponent } from "../components/input/input.component";
+import { DividerComponent } from "../components/divider/divider.component";
+import { ButtonComponent } from "../components/button/button.component";
 
 @NgModule({
     declarations: [
@@ -20,11 +23,6 @@ import { AcessoNegadoComponent } from './acesso-negado/acesso-negado.component';
         NotFoundComponent,
         AcessoNegadoComponent
     ],
-    imports: [
-        CommonModule,
-        RouterModule,
-        NgbModule
-    ],
     exports: [
         MenuComponent,
         MenuLoginComponent,
@@ -32,6 +30,14 @@ import { AcessoNegadoComponent } from './acesso-negado/acesso-negado.component';
         FooterComponent,
         NotFoundComponent,
         AcessoNegadoComponent
+    ],
+    imports: [
+        CommonModule,
+        RouterModule,
+        NgbModule,
+        InputComponent,
+        DividerComponent,
+        ButtonComponent
     ]
 })
 export class NavegacaoModule { }
