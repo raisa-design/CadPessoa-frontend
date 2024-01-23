@@ -12,11 +12,10 @@ import { Pessoa } from "../models/pessoa";
 export class PessoaService extends BaseService {
 
     constructor(private http: HttpClient) { super() }
-
     obterTodos(): Observable<Pessoa[]> {
         return this.http
-            .get<Pessoa[]>(this.UrlServiceV1 + "pessoas", super.ObterAuthHeaderJson())
-            .pipe(catchError(super.serviceError));
+            .get<Pessoa[]>(this.UrlServiceV1 + "pessoa-fisica", super.ObterAuthHeaderJson())
+            .pipe(map(response => response['$values'] ));
     }
 
     obterPorId(id: string): Observable<Pessoa> {

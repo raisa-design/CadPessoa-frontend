@@ -50,13 +50,13 @@ export class EditarComponent extends PessoaBaseComponent implements OnInit {
     this.pessoaForm.patchValue({
       id: this.pessoa.id,
       nome: this.pessoa.nome,
-      descricao: this.pessoa.descricao,
-      ativo: this.pessoa.ativo,
-      valor: CurrencyUtils.DecimalParaString(this.pessoa.valor)
+      // descricao: this.pessoa.descricao,
+      // ativo: this.pessoa.ativo,
+      //valor: CurrencyUtils.DecimalParaString(this.pessoa.valor)
     });
 
     // utilizar o [src] na imagem para evitar que se perca após post
-    this.imagemOriginalSrc = this.imagens + this.pessoa.imagem;
+    //this.imagemOriginalSrc = this.imagens + this.pessoa.imagem;
   }
 
   ngAfterViewInit(): void {
@@ -67,12 +67,12 @@ export class EditarComponent extends PessoaBaseComponent implements OnInit {
     if (this.pessoaForm.dirty && this.pessoaForm.valid) {
       this.pessoa = Object.assign({}, this.pessoa, this.pessoaForm.value);
 
-      if (this.imageBase64) {
-        this.pessoa.imagemUpload = this.imageBase64;
-        this.pessoa.imagem = this.imagemNome;
-      }
+      // if (this.imageBase64) {
+      //   this.pessoa.imagemUpload = this.imageBase64;
+      //   this.pessoa.imagem = this.imagemNome;
+      // }
 
-      this.pessoa.valor = CurrencyUtils.StringParaDecimal(this.pessoa.valor);
+      // this.pessoa.valor = CurrencyUtils.StringParaDecimal(this.pessoa.valor);
 
       this.pessoaService.atualizarPessoa(this.pessoa)
         .subscribe(

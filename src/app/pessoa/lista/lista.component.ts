@@ -10,17 +10,18 @@ import { Pessoa } from '../models/pessoa';
 })
 export class ListaComponent implements OnInit {
 
-  imagens: string = environment.imagensUrl;
-
-  public produtos: Pessoa[];
+  public pessoas: Pessoa[];
   errorMessage: string;
 
   constructor(private pessoaService: PessoaService) { }
 
-  ngOnInit(): void {
-    this.pessoaService.obterTodos()
-      .subscribe(
-        produtos => this.produtos = produtos,
-        error => this.errorMessage);
+  ngOnInit() {
+    this.getPessoas().then(() => {
+      console.log(this.pessoas);
+    });
+  }
+
+  async getPessoas(): Promise<void> {
+    this.pessoas = await this.pessoaService.obterTodos().toPromise();
   }
 }

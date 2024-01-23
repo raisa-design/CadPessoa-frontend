@@ -58,9 +58,9 @@ export class NovoComponent extends PessoaBaseComponent implements OnInit {
     if (this.pessoaForm.dirty && this.pessoaForm.valid) {
       this.pessoa = Object.assign({}, this.pessoa, this.pessoaForm.value);
 
-      this.pessoa.imagemUpload = this.croppedImage.split(',')[1];
-      this.pessoa.imagem = this.imagemNome;
-      this.pessoa.valor = CurrencyUtils.StringParaDecimal(this.pessoa.valor);
+      // this.pessoa.imagemUpload = this.croppedImage.split(',')[1];
+      // this.pessoa.imagem = this.imagemNome;
+      // this.pessoa.valor = CurrencyUtils.StringParaDecimal(this.pessoa.valor);
 
       this.pessoaService.novoPessoa(this.pessoa)
         .subscribe({
