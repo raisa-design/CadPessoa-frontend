@@ -14,7 +14,19 @@ export class DetalhesComponent {
 
   constructor(private route: ActivatedRoute) {
 
-    this.pessoa = this.route.snapshot.data['pessoa'];
+    var p = this.route.snapshot.data['pessoa'];
+    if (p.contatos && Array.isArray(p.contatos) && p.contatos.length > 1) {
+        p.contatos = p.contatos[1];
+    }
+    if (p.enderecos && Array.isArray(p.enderecos) && p.enderecos.length > 1) {
+        p.enderecos = p.enderecos[1];
+    }
+  this.pessoa = p;
+  console.log('Endereços:', this.pessoa.enderecos);
+  console.log('Contatos:', this.pessoa.contatos);
+    
+   
   }
+  
 
 }

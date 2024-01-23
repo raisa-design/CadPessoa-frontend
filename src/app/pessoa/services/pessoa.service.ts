@@ -20,7 +20,7 @@ export class PessoaService extends BaseService {
 
     obterPorId(id: string): Observable<Pessoa> {
         return this.http
-            .get<Pessoa>(this.UrlServiceV1 + "pessoas/" + id, super.ObterAuthHeaderJson())
+            .get<Pessoa>(this.UrlServiceV1 + "pessoa-fisica/" + id, super.ObterAuthHeaderJson())
             .pipe(catchError(super.serviceError));
     }
 

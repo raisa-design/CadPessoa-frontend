@@ -1,51 +1,53 @@
 <div class="container main-container">
-    <h4>Excluir {{ pessoa.nome }} </h4>
-    <br>
-    <h5>Você tem certeza disso?</h5>
-
     <div class="row">
         <div class="col-md-4">
-            <!-- <img src="{{ imagens }}{{ pessoa.imagem }}" style="width: 300px; height: 428px"> -->
+            <!-- Aqui você pode adicionar uma imagem se a classe Pessoa tiver uma propriedade de imagem -->
         </div>
         <div class="col-md-6">
             <dl>
-                <dt>
-                    Nome
-                </dt>
+                <dt>Nome</dt>
+                <dd>{{ pessoa.nome }}</dd>
+                <dt>SobreNome</dt>
+                <dd>{{ pessoa.sobreNome }}</dd>
+                <dt>Data de Nascimento</dt>
+                <dd>{{ pessoa.dataNascimento }}</dd>
+                <dt>Email</dt>
+                <dd>{{ pessoa.email }}</dd>
+                <dt>CPF</dt>
+                <dd>{{ pessoa.cpf }}</dd>
+                <dt>RG</dt>
+                <dd>{{ pessoa.rg }}</dd>
+                <dt>Endereços</dt>
                 <dd>
-                    {{ pessoa.nome }}
+                    <dl *ngFor="let endereco of pessoa.enderecos">
+                        <dt>Logradouro</dt>
+                        <dd>{{ endereco.logradouro }}</dd>
+                        <dt>Número</dt>
+                        <dd>{{ endereco.numero }}</dd>
+                        <dt>Complemento</dt>
+                        <dd>{{ endereco.complemento }}</dd>
+                        <dt>Cidade</dt>
+                        <dd>{{ endereco.cidade }}</dd>
+                        <dt>Estado</dt>
+                        <dd>{{ endereco.estado }}</dd>
+                        <dt>CEP</dt>
+                        <dd>{{ endereco.cep }}</dd>
+                    </dl>
                 </dd>
-                <dt>
-                    Descrição
-                </dt>
-                <!-- <dd>
-                    {{ pessoa.descricao }}
-                </dd> -->
-                <dt>
-                    Valor
-                </dt>
-                <!-- <dd>
-                    {{ pessoa.valor }}
-                </dd> -->
-                <dt>
-                    DataCadastro
-                </dt>
-                <!-- <dd>
-                    {{ pessoa.dataCadastro | date:'dd/MM/yyyy' }}
-                </dd> -->
-                <dt>
-                    Ativo?
-                </dt>
-                <!-- <dd>
-                    <input [checked]="pessoa.ativo" class="check-box" disabled="disabled" type="checkbox">
-                </dd> -->
+                <dt>Contatos</dt>
+                <dd>
+                    <dl *ngFor="let contato of pessoa.contatos">
+                        <dt>Nome</dt>
+                        <dd>{{ contato.nome }}</dd>
+                        <dt>Telefone ou Email</dt>
+                        <dd>{{ contato.telefoneOuEmail }}</dd>
+                    </dl>
+                </dd>
             </dl>
-
             <div>
                 <!-- <a class="btn btn-warning" [routerLink]="['/pessoas/editar',pessoa.id]">Editar</a>&nbsp; -->
                 <a class="btn btn-info" href="javascript:window.history.back();">Voltar</a>
             </div>
         </div>
     </div>
-
 </div>
