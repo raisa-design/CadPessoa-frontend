@@ -1,95 +1,520 @@
 <div class="container main-container">
+  <section class="w-full h-full flex justify-center items-center my-28">
+    <hr />
+    <div
+      class="flex gap-x-10 bg-stone-100 p-6 rounded-lg shadow-lg w-11/12 md:w-9/12 xl:w-6/12 items-center justify-center"
+    >
+      <div class="flex flex-col gap-4 items-center">
+        <h1 class="text-3xl text-center">Cadastrar Pessoa Física</h1>
+        <h2 class="text-2xl">Dados Pessoais</h2>
 
-    <h3>Novo Pessoa </h3>
-
-    <hr>
-    <div class="row">
-        <div class="col-md-10">
-            <div class="alert alert-danger" *ngIf="errors.length > 0">
-                <h3 id="msgRetorno">Opa! Alguma coisa não deu certo:</h3>
-                <ul>
-                    <li *ngFor="let error of errors">{{ error }}</li>
-                </ul>
-            </div>
-            <form enctype="multipart/form-data" (ngSubmit)="adicionarPessoa()" [formGroup]="pessoaForm">
+        <!-- Alerta -->
+        <div class="alert alert-danger" *ngIf="errors.length > 0">
+          <h3 id="msgRetorno">Opa! Alguma coisa não deu certo:</h3>
+          <ul>
+            <li *ngFor="let error of errors">{{ error }}</li>
+          </ul>
+        </div>
+        <form
+          enctype="multipart/form-data"
+          (ngSubmit)="adicionarPessoa()"
+          [formGroup]="pessoaForm"
+        >
+          <!-- Linha -->
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
+            <!-- Input -->
             <div class="form-group">
+              <label class="control-label">Nome</label>
+              <div>
+                <input
+                  class="form-control"
+                  id="nome"
+                  type="text"
+                  placeholder="Nome (requerido)"
+                  [ngClass]="{ 'is-invalid': displayMessage.nome }"
+                />
+                <span class="text-danger" *ngIf="displayMessage.nome">
+                  <p [innerHTML]="displayMessage.nome"></p>
+                </span>
+              </div>
+            </div>
+
+            <!-- Input -->
+            <div class="form-group">
+              <label class="control-label">Sobrenome</label>
+              <div>
+                <input
+                  class="form-control"
+                  id="sobreNome"
+                  type="text"
+                  placeholder="Sobrenome (requerido)"
+                  formControlName="sobreNome"
+                  [ngClass]="{ 'is-invalid': displayMessage.sobreNome }"
+                />
+                <span class="text-danger" *ngIf="displayMessage.sobreNome">
+                  <p [innerHTML]="displayMessage.sobreNome"></p>
+                </span>
+              </div>
+            </div>
+
+            <!-- Input -->
+            <div class="form-group">
+              <label class="control-label">Data de Nascimento</label>
+              <div>
+                <input
+                  class="form-control"
+                  id="dataNascimento"
+                  type="date"
+                  placeholder="Data de Nascimento (requerido)"
+                  formControlName="dataNascimento"
+                  [ngClass]="{ 'is-invalid': displayMessage.dataNascimento }"
+                />
+                <span class="text-danger" *ngIf="displayMessage.dataNascimento">
+                  <p [innerHTML]="displayMessage.dataNascimento"></p>
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
+            <!-- Input -->
+            <div class="form-group">
+              <label class="control-label">Email</label>
+              <div>
+                <input
+                  class="form-control"
+                  id="email"
+                  type="email"
+                  placeholder="Email (requerido)"
+                  formControlName="email"
+                  [ngClass]="{ 'is-invalid': displayMessage.email }"
+                />
+                <span class="text-danger" *ngIf="displayMessage.email">
+                  <p [innerHTML]="displayMessage.email"></p>
+                </span>
+              </div>
+            </div>
+
+            <!-- Input -->
+            <div class="form-group">
+              <label class="control-label">CPF</label>
+              <div>
+                <input
+                  class="form-control"
+                  id="cpf"
+                  type="text"
+                  placeholder="CPF (requerido)"
+                  formControlName="cpf"
+                  [ngClass]="{ 'is-invalid': displayMessage.cpf }"
+                />
+                <span class="text-danger" *ngIf="displayMessage.cpf">
+                  <p [innerHTML]="displayMessage.cpf"></p>
+                </span>
+              </div>
+            </div>
+
+            <!-- Input -->
+            <div class="form-group">
+              <label class="control-label">RG</label>
+              <div>
+                <input
+                  class="form-control"
+                  id="rg"
+                  type="text"
+                  placeholder="RG (requerido)"
+                  formControlName="rg"
+                  [ngClass]="{ 'is-invalid': displayMessage.rg }"
+                />
+                <span class="text-danger" *ngIf="displayMessage.rg">
+                  <p [innerHTML]="displayMessage.rg"></p>
+                </span>
+              </div>
+            </div>
+          </div>
+          <app-divider />
+          <!-- Linha -->
+          <div *ngFor="let address of addressList">
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
+              <!-- Input -->
+              <div class="form-group">
                 <label class="control-label">Nome</label>
                 <div>
-                    <input class="form-control" id="nome" type="text" placeholder="Nome (requerido)" formControlName="nome" [ngClass]="{'is-invalid': displayMessage.nome }" />
-                    <span class="text-danger" *ngIf="displayMessage.nome">
-                        <p [innerHTML]="displayMessage.nome"></p>
-                    </span>
+                  <input
+                    class="form-control"
+                    id="nome"
+                    type="text"
+                    placeholder="Nome (requerido)"
+                    [ngClass]="{ 'is-invalid': displayMessage.nome }"
+                  />
+                  <span class="text-danger" *ngIf="displayMessage.nome">
+                    <p [innerHTML]="displayMessage.nome"></p>
+                  </span>
                 </div>
-            </div>
-        
-            <div class="form-group">
+              </div>
+
+              <!-- Input -->
+              <div class="form-group">
                 <label class="control-label">Sobrenome</label>
                 <div>
-                    <input class="form-control" id="sobreNome" type="text" placeholder="Sobrenome (requerido)" formControlName="sobreNome" [ngClass]="{'is-invalid': displayMessage.sobreNome }" />
-                    <span class="text-danger" *ngIf="displayMessage.sobreNome">
-                        <p [innerHTML]="displayMessage.sobreNome"></p>
-                    </span>
+                  <input
+                    class="form-control"
+                    id="sobreNome"
+                    type="text"
+                    placeholder="Sobrenome (requerido)"
+                    formControlName="sobreNome"
+                    [ngClass]="{ 'is-invalid': displayMessage.sobreNome }"
+                  />
+                  <span class="text-danger" *ngIf="displayMessage.sobreNome">
+                    <p [innerHTML]="displayMessage.sobreNome"></p>
+                  </span>
                 </div>
-            </div>
-        
-            <div class="form-group">
+              </div>
+
+              <!-- Input -->
+              <div class="form-group">
                 <label class="control-label">Data de Nascimento</label>
                 <div>
-                    <input class="form-control" id="dataNascimento" type="date" placeholder="Data de Nascimento (requerido)" formControlName="dataNascimento" [ngClass]="{'is-invalid': displayMessage.dataNascimento }" />
-                    <span class="text-danger" *ngIf="displayMessage.dataNascimento">
-                        <p [innerHTML]="displayMessage.dataNascimento"></p>
-                    </span>
+                  <input
+                    class="form-control"
+                    id="dataNascimento"
+                    type="date"
+                    placeholder="Data de Nascimento (requerido)"
+                    formControlName="dataNascimento"
+                    [ngClass]="{ 'is-invalid': displayMessage.dataNascimento }"
+                  />
+                  <span
+                    class="text-danger"
+                    *ngIf="displayMessage.dataNascimento"
+                  >
+                    <p [innerHTML]="displayMessage.dataNascimento"></p>
+                  </span>
                 </div>
+              </div>
             </div>
-        
-            <div class="form-group">
-                <label class="control-label">Email</label>
+            <!-- Linha -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
+              <!-- Input -->
+              <div class="form-group">
+                <label class="control-label">Nome</label>
                 <div>
-                    <input class="form-control" id="email" type="email" placeholder="Email (requerido)" formControlName="email" [ngClass]="{'is-invalid': displayMessage.email }" />
-                    <span class="text-danger" *ngIf="displayMessage.email">
-                        <p [innerHTML]="displayMessage.email"></p>
-                    </span>
+                  <input
+                    class="form-control"
+                    id="nome"
+                    type="text"
+                    placeholder="Nome (requerido)"
+                    [ngClass]="{ 'is-invalid': displayMessage.nome }"
+                  />
+                  <span class="text-danger" *ngIf="displayMessage.nome">
+                    <p [innerHTML]="displayMessage.nome"></p>
+                  </span>
                 </div>
-            </div>
-        
-            <div class="form-group">
-                <label class="control-label">CPF</label>
-                <div>
-                    <input class="form-control" id="cpf" type="text" placeholder="CPF (requerido)" formControlName="cpf" [ngClass]="{'is-invalid': displayMessage.cpf }" />
-                    <span class="text-danger" *ngIf="displayMessage.cpf">
-                        <p [innerHTML]="displayMessage.cpf"></p>
-                    </span>
-                </div>
-            </div>
-        
-            <div class="form-group">
-                <label class="control-label">RG</label>
-                <div>
-                    <input class="form-control" id="rg" type="text" placeholder="RG (requerido)" formControlName="rg" [ngClass]="{'is-invalid': displayMessage.rg }" />
-                    <span class="text-danger" *ngIf="displayMessage.rg">
-                        <p [innerHTML]="displayMessage.rg"></p>
-                    </span>
-                </div>
-            </div>
-        
-            <!-- Aqui você pode adicionar campos para endereços e contatos se necessário -->
-        
-            <div>
-                <!-- <a class="btn btn-warning" [routerLink]="['/pessoas/editar',pessoa.id]">Editar</a>&nbsp; -->
-                <a class="btn btn-info" href="javascript:window.history.back();">Voltar</a>
-            </div>
+              </div>
 
-                <div class="form-group form-check">
-                    <label class="form-check-label">
-                        <input class="form-check-input" type="checkbox" id="ativo" formControlName="ativo" name="ativo" value="true"> Ativo?
-                    </label>
+              <!-- Input -->
+              <div class="form-group">
+                <label class="control-label">Sobrenome</label>
+                <div>
+                  <input
+                    class="form-control"
+                    id="sobreNome"
+                    type="text"
+                    placeholder="Sobrenome (requerido)"
+                    formControlName="sobreNome"
+                    [ngClass]="{ 'is-invalid': displayMessage.sobreNome }"
+                  />
+                  <span class="text-danger" *ngIf="displayMessage.sobreNome">
+                    <p [innerHTML]="displayMessage.sobreNome"></p>
+                  </span>
+                </div>
+              </div>
+
+              <!-- Input -->
+        
+            </div>
+            <!-- Linha -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
+                <div class="form-group">
+                    <app-button
+                        text="Remover endereço"
+                        [variant]="dangerVariant"
+                        (change)="removeAddress(address.id)"
+                    />
                 </div>
 
                 <div class="form-group">
-                    <input type="submit" id="cadastroPessoa" [disabled]="!pessoaForm.valid" value="Cadastrar" class="btn btn-primary">&nbsp;
-                    <a class="btn btn-info" href="/pessoas/listar-todos">Voltar</a>
+                    <app-button
+                        text="Adicionar novo endereço"
+                        (change)="addAddress()"
+                    />
                 </div>
-            </form>
-        </div>
+            </div>
+
+          </div>
+
+          <app-divider />
+          <!-- Linha -->
+          <div *ngFor="let contact of contactList">
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
+              <!-- Input -->
+              <div class="form-group">
+                <label class="control-label">Nome</label>
+                <div>
+                  <input
+                    class="form-control"
+                    id="nome"
+                    type="text"
+                    placeholder="Nome (requerido)"
+                    [ngClass]="{ 'is-invalid': displayMessage.nome }"
+                  />
+                  <span class="text-danger" *ngIf="displayMessage.nome">
+                    <p [innerHTML]="displayMessage.nome"></p>
+                  </span>
+                </div>
+              </div>
+
+              <!-- Input -->
+              <div class="form-group">
+                <label class="control-label">Sobrenome</label>
+                <div>
+                  <input
+                    class="form-control"
+                    id="sobreNome"
+                    type="text"
+                    placeholder="Sobrenome (requerido)"
+                    formControlName="sobreNome"
+                    [ngClass]="{ 'is-invalid': displayMessage.sobreNome }"
+                  />
+                  <span class="text-danger" *ngIf="displayMessage.sobreNome">
+                    <p [innerHTML]="displayMessage.sobreNome"></p>
+                  </span>
+                </div>
+              </div>
+
+              <!-- Input -->
+              <div class="form-group">
+                <label class="control-label">Data de Nascimento</label>
+                <div>
+                  <input
+                    class="form-control"
+                    id="dataNascimento"
+                    type="date"
+                    placeholder="Data de Nascimento (requerido)"
+                    formControlName="dataNascimento"
+                    [ngClass]="{ 'is-invalid': displayMessage.dataNascimento }"
+                  />
+                  <span
+                    class="text-danger"
+                    *ngIf="displayMessage.dataNascimento"
+                  >
+                    <p [innerHTML]="displayMessage.dataNascimento"></p>
+                  </span>
+                </div>
+              </div>
+            </div>
+            <!-- Linha -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
+              <!-- Input -->
+              <div class="form-group">
+                <label class="control-label">Nome</label>
+                <div>
+                  <input
+                    class="form-control"
+                    id="nome"
+                    type="text"
+                    placeholder="Nome (requerido)"
+                    [ngClass]="{ 'is-invalid': displayMessage.nome }"
+                  />
+                  <span class="text-danger" *ngIf="displayMessage.nome">
+                    <p [innerHTML]="displayMessage.nome"></p>
+                  </span>
+                </div>
+              </div>
+
+              <!-- Input -->
+              <div class="form-group">
+                <label class="control-label">Sobrenome</label>
+                <div>
+                  <input
+                    class="form-control"
+                    id="sobreNome"
+                    type="text"
+                    placeholder="Sobrenome (requerido)"
+                    formControlName="sobreNome"
+                    [ngClass]="{ 'is-invalid': displayMessage.sobreNome }"
+                  />
+                  <span class="text-danger" *ngIf="displayMessage.sobreNome">
+                    <p [innerHTML]="displayMessage.sobreNome"></p>
+                  </span>
+                </div>
+              </div>
+
+              <!-- Input -->
+        
+            </div>
+            <!-- Linha -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
+                <div class="form-group">
+                    <app-button
+                        text="Remover endereço"
+                        [variant]="dangerVariant"
+                        (change)="removeAddress(address.id)"
+                    />
+                </div>
+
+                <div class="form-group">
+                    <app-button
+                        text="Adicionar novo endereço"
+                        (change)="addAddress()"
+                    />
+                </div>
+            </div>
+
+          </div>
+
+          <div class="form-group">
+            <input
+              type="submit"
+              id="cadastroPessoa"
+              [disabled]="!pessoaForm.valid"
+              value="Cadastrar"
+              class="btn btn-primary"
+            />&nbsp;
+            <a class="btn btn-info" href="/pessoas/listar-todos">Voltar</a>
+          </div>
+        </form>
+      </div>
     </div>
+  </section>
 </div>
+
+<!-- 
+<section class="w-full h-full flex justify-center items-center my-28">
+    <div
+      class="flex gap-x-10 bg-stone-100 p-6 rounded-lg shadow-lg w-11/12 md:w-9/12 xl:w-6/12 items-center justify-center">
+      <div class="flex flex-col gap-4 items-center">
+        <h1 class="text-3xl text-center">Cadastrar Pessoa Física</h1>
+        <h2 class="text-2xl">Dados Pessoais</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
+          <app-input label="Nome" name="username" placeholder="Insira seu nome" formControlName="nome" />
+          <app-input
+            label="Sobrenome"
+            name="lastname"
+            placeholder="Insira seu sobrenome" />
+          <app-input
+            type="date"
+            label="Data de nascimento"
+            name="birthdate"
+            placeholder="Insira sua data de nascimento" />
+          <app-input label="Email" name="email" placeholder="Insira seu email" />
+          <app-input label="CPF" name="cpf" placeholder="Insira seu CPF" />
+          <app-input label="RG" name="rg" placeholder="Insira seu RG " />
+        </div>
+        <app-divider />
+        <h2 class="text-2xl">Endereços</h2>
+        <div>
+          <div
+            class="grid grid-cols-1 sm:grid-cols-3 gap-2 relative pb-16 mb-6"
+            *ngFor="let address of addressList">
+            <app-input
+              label="Logradouro"
+              name="patio"
+              placeholder="Insira seu logradouro" />
+            <app-input
+              label="Número"
+              name="number"
+              placeholder="Insira seu número" />
+            <app-input
+              type="CEP"
+              label="Cep"
+              name="cep"
+              placeholder="Insira seu cep" />
+            <app-input
+              label="Complemento"
+              name="complement"
+              placeholder="Insira o complemento" />
+            <app-input
+              label="Cidade"
+              name="city"
+              placeholder="Insira sua cidade" />
+            <app-input-select label="Estado" name="state" [options]="stateList" />
+            <app-button
+              text="Remover endereço"
+              [variant]="dangerVariant"
+              class="absolute bottom-0 right-0"
+              (change)="removeAddress(address.id)" />
+          </div>
+          <div class="flex justify-between pt-6">
+            <app-button text="Adicionar novo endereço" (change)="addAddress()" />
+          </div>
+        </div>
+        <app-divider />
+        <h2 class="text-2xl">Contatos</h2>
+        <div>
+          <div
+            class="grid grid-cols-1 sm:grid-cols-3  gap-2 relative pb-16 mb-6"
+            *ngFor="let contact of contactList">
+            <app-input
+              label="Nome"
+              name="name"
+              placeholder="Insira seu nome para contato" />
+            <app-input
+              label="Contato"
+              name="contact"
+              placeholder="Insira seu contato" />
+            <app-input-select
+              label="Tipo Contato"
+              name="contacttype"
+              [options]="contactTypes" />
+            <app-button
+              text="Remover contato"
+              [variant]="dangerVariant"
+              class="absolute bottom-0 right-0"
+              (change)="removeContact(contact.id)" />
+          </div>
+          <div class="flex justify-between pt-6">
+            <app-button text="Adicionar novo contato" (change)="addContact()" />
+          </div>
+        </div>
+        <app-divider />
+        <div class="flex justify-center items-center">
+          <app-button text="Salvar" />
+        </div>
+      </div>
+    </div>
+  </section>
+   -->
+
+<!-- <div>
+              <a class="btn btn-warning" [routerLink]="['/pessoas/editar',pessoa.id]">Editar</a>&nbsp;
+              <a class="btn btn-info" href="javascript:window.history.back();"
+                >Voltar</a
+              >
+            </div> -->
+
+<!-- <app-button
+              text="Remover endereço"
+              [variant]="dangerVariant"
+              class="absolute bottom-0 right-0"
+              (change)="removeAddress(address.id)"
+            />
+
+            <div class="flex justify-between pt-6">
+              <app-button
+                text="Adicionar novo endereço"
+                (change)="addAddress()"
+              />
+            </div> -->
+
+<!-- <div class="form-group form-check">
+              <label class="form-check-label">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  id="ativo"
+                  formControlName="ativo"
+                  name="ativo"
+                  value="true"
+                />
+                Ativo?
+              </label>
+            </div> -->
+<!-- </div> -->

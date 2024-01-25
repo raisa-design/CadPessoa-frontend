@@ -39,20 +39,22 @@ export class EditarComponent extends PessoaBaseComponent implements OnInit {
   ngOnInit(): void {
 
     this.pessoaForm = this.fb.group({
-      fornecedorId: ['', [Validators.required]],
-      nome: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(200)]],
-      descricao: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(1000)]],
-      imagem: [''],
-      valor: ['', [Validators.required]],
-      ativo: [0]
+      nome: ['', [Validators.required]],
+      sobreNome: ['', [Validators.required]],
+      dataNascimento: ['', [Validators.required]],
+      email: ['', [Validators.required]],
+      cpf: ['', [Validators.required]],
+      rg: ['', [Validators.required]]
     });
 
     this.pessoaForm.patchValue({
       id: this.pessoa.id,
       nome: this.pessoa.nome,
-      // descricao: this.pessoa.descricao,
-      // ativo: this.pessoa.ativo,
-      //valor: CurrencyUtils.DecimalParaString(this.pessoa.valor)
+      sobreNome: this.pessoa.sobreNome,
+      dataNascimento: this.pessoa.dataNascimento,
+      email: this.pessoa.email,
+      cpf: this.pessoa.cpf,
+      rg: this.pessoa.rg
     });
 
     // utilizar o [src] na imagem para evitar que se perca após post

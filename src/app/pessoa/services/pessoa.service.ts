@@ -26,7 +26,7 @@ export class PessoaService extends BaseService {
 
     novoPessoa(pessoa: Pessoa): Observable<Pessoa> {
         return this.http
-            .post(this.UrlServiceV1 + "pessoas", pessoa, super.ObterAuthHeaderJson())
+            .post(this.UrlServiceV1 + "pessoa-fisica", pessoa, super.ObterAuthHeaderJson())
             .pipe(
                 map(super.extractData),
                 catchError(super.serviceError));
@@ -34,7 +34,7 @@ export class PessoaService extends BaseService {
 
     atualizarPessoa(pessoa: Pessoa): Observable<Pessoa> {
         return this.http
-            .put(this.UrlServiceV1 + "pessoas/" + pessoa.id, pessoa, super.ObterAuthHeaderJson())
+            .put(this.UrlServiceV1 + "pessoa-fisica/" + pessoa.id, pessoa, super.ObterAuthHeaderJson())
             .pipe(
                 map(super.extractData),
                 catchError(super.serviceError));
@@ -42,7 +42,7 @@ export class PessoaService extends BaseService {
 
     excluirPessoa(id: string): Observable<Pessoa> {
         return this.http
-            .delete(this.UrlServiceV1 + "pessoas/" + id, super.ObterAuthHeaderJson())
+            .delete(this.UrlServiceV1 + "pessoa-fisica/" + id, super.ObterAuthHeaderJson())
             .pipe(
                 map(super.extractData),
                 catchError(super.serviceError));

@@ -15,13 +15,6 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label">Fornecedor</label>
-                    <span class="text-danger" *ngIf="displayMessage.fornecedorId">
-                        <p [innerHTML]="displayMessage.fornecedorId"></p>
-                    </span>
-                </div>
-
-                <div class="form-group">
                     <label class="control-label">Nome</label>
                     <div>
                         <input class="form-control" id="nome" type="text" placeholder="Nome (requerido)" formControlName="nome" [ngClass]="{'is-invalid': displayMessage.nome }" />
@@ -30,44 +23,53 @@
                         </span>
                     </div>
                 </div>
-
+            
                 <div class="form-group">
-                    <label class="control-label">Descrição</label>
+                    <label class="control-label">Sobrenome</label>
                     <div>
-                        <textarea cols="40" rows="5" maxlength="1000" class="form-control" id="descricao" placeholder="Descrição (requerido)" formControlName="descricao" [ngClass]="{'is-invalid': displayMessage.descricao }"></textarea>
-                        <span class="text-danger" *ngIf="displayMessage.descricao">
-                            <p [innerHTML]="displayMessage.descricao"></p>
+                        <input class="form-control" id="sobreNome" type="text" placeholder="Sobrenome (requerido)" formControlName="sobreNome" [ngClass]="{'is-invalid': displayMessage.sobreNome }" />
+                        <span class="text-danger" *ngIf="displayMessage.sobreNome">
+                            <p [innerHTML]="displayMessage.sobreNome"></p>
                         </span>
                     </div>
                 </div>
-
-                <div *ngIf="!imagemPreview" class="form-group">
-                    <label>Imagem Atual</label><br>
-                    <img [src]="imagemOriginalSrc" style="width: 70px; height: 100px">
-                </div>
-                <div *ngIf="imagemPreview" class="form-group">
-                    <label>Nova Imagem</label><br>
-                    <img [src]="imagemPreview" style="width: 70px; height: 100px" />
-                </div>
-
+            
                 <div class="form-group">
-                    <label class="control-label">Imagem do Pessoa</label>
-
-                    <div class="custom-file">
-                        <input type="file" accept="image/jpeg,image/png" class="custom-file-input" id="imagem" formControlName="imagem" #fileInput (change)="upload(fileInput.files)" [ngClass]="{'is-invalid': displayMessage.imagem }">
-                        <label data-browse="Procurar" style="width: 400px" class="custom-file-label"></label>
-                        <span class="text-danger" *ngIf="displayMessage.imagem">
-                            <p [innerHTML]="displayMessage.imagem"></p>
+                    <label class="control-label">Data de Nascimento</label>
+                    <div>
+                        <input class="form-control" id="dataNascimento" type="date" placeholder="Data de Nascimento (requerido)" formControlName="dataNascimento" [ngClass]="{'is-invalid': displayMessage.dataNascimento }" />
+                        <span class="text-danger" *ngIf="displayMessage.dataNascimento">
+                            <p [innerHTML]="displayMessage.dataNascimento"></p>
                         </span>
                     </div>
                 </div>
-
+            
                 <div class="form-group">
-                    <label class="control-label">Valor</label>
+                    <label class="control-label">Email</label>
                     <div>
-                        <input class="form-control" id="valor" type="text" placeholder="Valor (requerido)" formControlName="valor" [ngClass]="{'is-invalid': displayMessage.valor }" />
-                        <span class="text-danger" *ngIf="displayMessage.valor">
-                            <p [innerHTML]="displayMessage.valor"></p>
+                        <input class="form-control" id="email" type="email" placeholder="Email (requerido)" formControlName="email" [ngClass]="{'is-invalid': displayMessage.email }" />
+                        <span class="text-danger" *ngIf="displayMessage.email">
+                            <p [innerHTML]="displayMessage.email"></p>
+                        </span>
+                    </div>
+                </div>
+            
+                <div class="form-group">
+                    <label class="control-label">CPF</label>
+                    <div>
+                        <input class="form-control" id="cpf" type="text" placeholder="CPF (requerido)" formControlName="cpf" [ngClass]="{'is-invalid': displayMessage.cpf }" />
+                        <span class="text-danger" *ngIf="displayMessage.cpf">
+                            <p [innerHTML]="displayMessage.cpf"></p>
+                        </span>
+                    </div>
+                </div>
+            
+                <div class="form-group">
+                    <label class="control-label">RG</label>
+                    <div>
+                        <input class="form-control" id="rg" type="text" placeholder="RG (requerido)" formControlName="rg" [ngClass]="{'is-invalid': displayMessage.rg }" />
+                        <span class="text-danger" *ngIf="displayMessage.rg">
+                            <p [innerHTML]="displayMessage.rg"></p>
                         </span>
                     </div>
                 </div>

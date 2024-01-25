@@ -8,6 +8,7 @@ import { ExcluirComponent } from './excluir/excluir.component';
 import { PessoaGuard } from './services/pessoa.guard';
 import { PessoaResolve } from './services/pessoa.resolve';
 import { PessoaAppComponent } from './pessoa.app.component';
+import { ContaGuard } from '../conta/services/conta.guard';
 
 
 const pessoaRouterConfig: Routes = [
@@ -16,30 +17,36 @@ const pessoaRouterConfig: Routes = [
         children: [
             { path: 'listar-todos', component: ListaComponent },
             {
-                path: 'adicionar-novo', component: NovoComponent,
+                path: 'novo', component: NovoComponent,
+                canDeactivate: [PessoaGuard],
                 canActivate: [PessoaGuard],
+                
             },
             {
                 path: 'editar/:id', component: EditarComponent,
-                canActivate: [PessoaGuard],
-                data: [{ claim: { nome: 'Pessoa', valor: 'Atualizar' } }],
                 resolve: {
                     pessoa: PessoaResolve
-                }
+                },
+                canDeactivate: [PessoaGuard],
+                canActivate: [PessoaGuard],
             },
             {
                 path: 'detalhes/:id', component: DetalhesComponent,
                 resolve: {
                     pessoa: PessoaResolve
-                }
+                },
+                canDeactivate: [PessoaGuard],
+                canActivate: [PessoaGuard],
+                
             },
             {
                 path: 'excluir/:id', component: ExcluirComponent,
-                canActivate: [PessoaGuard],
                 data: [{ claim: { nome: 'Pessoa', valor: 'Excluir' } }],
                 resolve: {
                     pessoa: PessoaResolve
-                }
+                },
+                canDeactivate: [PessoaGuard],
+                canActivate: [PessoaGuard],
             },
         ]
     }

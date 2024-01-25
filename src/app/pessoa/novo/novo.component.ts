@@ -11,6 +11,11 @@ import { ImageCroppedEvent, ImageTransform, Dimensions } from 'ngx-image-cropper
 import { CurrencyUtils } from 'src/app/utils/currency-utils';
 import { PessoaBaseComponent } from '../produto-form.base.component';
 import { PessoaService } from '../services/pessoa.service';
+import { InputOption } from 'src/app/types/InputOption';
+import { ButtonVariant } from 'src/app/types/ButtonVariant';
+import { getBrazilUF } from 'src/app/utils/UF';
+import { Address } from 'src/app/types/Adress';
+import { Contact } from 'src/app/types/Contact';
 
 
 @Component({
@@ -41,12 +46,12 @@ export class NovoComponent extends PessoaBaseComponent implements OnInit {
 
 
     this.pessoaForm = this.fb.group({
-      fornecedorId: ['', [Validators.required]],
-      nome: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(200)]],
-      descricao: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(1000)]],
-      imagem: ['', [Validators.required]],
-      valor: ['', [Validators.required]],
-      ativo: [true]
+      nome: ['', [Validators.required]],
+      sobreNome: ['', [Validators.required]],
+      dataNascimento: ['', [Validators.required]],
+      email: ['', [Validators.required]],
+      cpf: ['', [Validators.required]],
+      rg: ['', [Validators.required]]
     });
   }
 
@@ -104,6 +109,57 @@ export class NovoComponent extends PessoaBaseComponent implements OnInit {
   }
   loadImageFailed() {
     this.errors.push('O formato do arquivo ' + this.imagemNome + ' não é aceito.');
+  }
+
+  
+  stateList: InputOption[] = getBrazilUF()
+  contactTypes: InputOption[] = [{label: 'Email', value: 'email'}, {label: 'Telefone', value: 'phone'}]
+  dangerVariant: ButtonVariant = ButtonVariant.danger
+
+  addressList: Address[] = [{
+    id: 0,
+    cep: 0,
+    city: '',
+    complement: '',
+    number: 0,
+    state: '',
+    street: ''
+  }]
+
+  contactList: Contact[] = [{
+    id: 0,
+    name: '',
+    contact: '',
+    type: 'email'
+  }]
+
+  addAddress(){
+    this.addressList.push({
+      id:  Math.floor(Math.random() * 999),
+      cep: 0,
+      city: '',
+      complement: '',
+      number: 0,
+      state: '',
+      street: ''
+    });
+  }
+
+  removeAddress(removeId: number){
+    this.addressList = this.addressList.filter((item) => item.id !== removeId);
+  }
+
+  addContact(){
+    this.contactList.push({
+      id:  Math.floor(Math.random() * 999),
+      name: '',
+      contact: '',
+      type: 'email'
+    });
+  }
+
+  removeContact(removeId: number){
+    this.contactList = this.contactList.filter((item) => item.id !== removeId);
   }
 }
 

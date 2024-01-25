@@ -21,7 +21,7 @@ export class ContaGuard implements CanDeactivate<CadastroComponent>, CanActivate
 
     canActivate() {
         if(this.localStorageUtils.obterTokenUsuario()){
-            this.router.navigate(['/home']);
+            this.router.navigate(['/pessoas/listar-todos']);
         }
 
         return true;

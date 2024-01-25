@@ -15,31 +15,37 @@ import { NovoComponent } from './novo/novo.component';
 import { EditarComponent } from './editar/editar.component';
 import { ExcluirComponent } from './excluir/excluir.component';
 import { DetalhesComponent } from './detalhes/detalhes.component';
+import { InputComponent } from "../components/input/input.component";
+import { DividerComponent } from "../components/divider/divider.component";
+import { ButtonComponent } from "../components/button/button.component";
 
 
 
 
 @NgModule({
-  declarations: [
-    PessoaAppComponent,
-    ListaComponent,
-    NovoComponent,
-    EditarComponent,
-    ExcluirComponent,
-    DetalhesComponent
-  ],
-  imports: [
-    CommonModule,
-    PessoaRoutingModule,
-    NgxSpinnerModule,
-    FormsModule,
-    ReactiveFormsModule,
-    ImageCropperModule
-  ],
-  providers: [
-    PessoaService,
-    PessoaResolve,
-    PessoaGuard
-  ],
+    declarations: [
+        PessoaAppComponent,
+        ListaComponent,
+        NovoComponent,
+        EditarComponent,
+        ExcluirComponent,
+        DetalhesComponent
+    ],
+    providers: [
+        PessoaService,
+        PessoaResolve,
+        PessoaGuard
+    ],
+    imports: [
+        CommonModule,
+        PessoaRoutingModule,
+        NgxSpinnerModule,
+        FormsModule,
+        ReactiveFormsModule,
+        ImageCropperModule,
+        InputComponent,
+        DividerComponent,
+        ButtonComponent
+    ]
 })
 export class PessoaModule { }

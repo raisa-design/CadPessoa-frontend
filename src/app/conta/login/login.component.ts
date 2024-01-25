@@ -84,7 +84,7 @@ export class LoginComponent extends FormBaseComponent implements OnInit {
       toast.onHidden.subscribe(() => {
         this.returnUrl
         ? this.router.navigate([this.returnUrl])
-        : this.router.navigate(['/home']);
+        : this.router.navigate(['/pessoas/listar-todos']);
       });
     }
   }
