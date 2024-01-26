@@ -1,7 +1,8 @@
 <button 
     class="text-slate-900 py-3 px-8 rounded-lg hover:shadow-md" 
     [class]="variant === 'danger' ? 'bg-red-500 text-white' : 'bg-orange-300 text-slate-900'"
-    (click)="onChange($event)"    
+    (click)="onChange($event)"
+    type="button"    
 >
     {{text}}
 </button>

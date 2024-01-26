@@ -16,6 +16,7 @@ import { ButtonVariant } from 'src/app/types/ButtonVariant';
 import { getBrazilUF } from 'src/app/utils/UF';
 import { Address } from 'src/app/types/Adress';
 import { Contact } from 'src/app/types/Contact';
+import { Contato, Endereco } from '../models/pessoa';
 
 
 @Component({
@@ -36,6 +37,19 @@ export class NovoComponent extends PessoaBaseComponent implements OnInit {
   transform: ImageTransform = {};
   imageURL: string;
   imagemNome: string;
+
+  //address fields
+  street: string = '';
+  houseNumber: string = '';
+  cep: string = '';
+  complement: string = '';
+  city: string = '';
+  state: string = '';
+
+  //contact fields
+  contactName: string = '';
+  contactType: string = '';
+  contact: string = '';
 
   constructor(private fb: FormBuilder,
     private pessoaService: PessoaService,
@@ -67,7 +81,7 @@ export class NovoComponent extends PessoaBaseComponent implements OnInit {
       // this.pessoa.imagem = this.imagemNome;
       // this.pessoa.valor = CurrencyUtils.StringParaDecimal(this.pessoa.valor);
 
-      this.pessoaService.novoPessoa(this.pessoa)
+      this.pessoaService.novoPessoa({...this.pessoa, enderecos: this.addressList, contatos: this.contactList})
         .subscribe({
           next: (sucesso: any) => { this.processarSucesso(sucesso) },
           error: (falha: any) => { this.processarFalha(falha) }
@@ -116,49 +130,54 @@ export class NovoComponent extends PessoaBaseComponent implements OnInit {
   contactTypes: InputOption[] = [{label: 'Email', value: 'email'}, {label: 'Telefone', value: 'phone'}]
   dangerVariant: ButtonVariant = ButtonVariant.danger
 
-  addressList: Address[] = [{
-    id: 0,
-    cep: 0,
-    city: '',
-    complement: '',
-    number: 0,
-    state: '',
-    street: ''
-  }]
+  addressList: Endereco[] = [{id: '0'} as Endereco]
 
-  contactList: Contact[] = [{
-    id: 0,
-    name: '',
-    contact: '',
-    type: 'email'
-  }]
+  contactList: Contato[] = [{ id: '0', tipoContato: 'email'} as Contato]
 
   addAddress(){
     this.addressList.push({
-      id:  Math.floor(Math.random() * 999),
-      cep: 0,
-      city: '',
-      complement: '',
-      number: 0,
-      state: '',
-      street: ''
-    });
+      id:  Math.floor(Math.random() * 999).toString(),
+    } as Endereco);
   }
 
-  removeAddress(removeId: number){
+  saveAddress(addressId: string){
+    this.addressList = this.addressList.map(item => {
+      const itemAux = item;
+      if(item.id === addressId){
+        itemAux.cep = itemAux.cep;
+        itemAux.cidade = this.city;
+        itemAux.complemento = this.complement;
+        itemAux.estado = this.state;
+        itemAux.logradouro = this.street;
+      }
+      return itemAux;
+    })
+  }
+
+  removeAddress(removeId: string){
     this.addressList = this.addressList.filter((item) => item.id !== removeId);
   }
 
   addContact(){
     this.contactList.push({
-      id:  Math.floor(Math.random() * 999),
-      name: '',
-      contact: '',
-      type: 'email'
-    });
+      id:  Math.floor(Math.random() * 999).toString(),
+      tipoContato: 'email'
+    } as Contato);
   }
 
-  removeContact(removeId: number){
+  saveContact(contactId: string){
+   this.contactList = this.contactList.map(item => {
+      const itemAux = item;
+      if(item.id === contactId){
+        itemAux.nome = this.contactName;
+        itemAux.telefoneOuEmail = this.contactType;
+        itemAux.tipoContato = this.contact;
+      }
+      return itemAux;
+    })
+  }
+
+  removeContact(removeId: string){
     this.contactList = this.contactList.filter((item) => item.id !== removeId);
   }
 }

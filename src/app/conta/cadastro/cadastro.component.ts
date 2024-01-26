@@ -55,11 +55,15 @@ export class CadastroComponent extends FormBaseComponent implements OnInit, Afte
 
     let senha = new FormControl('', [Validators.required, CustomValidators.rangeLength([6, 15])]);
     let senhaConfirm = new FormControl('', [Validators.required, CustomValidators.rangeLength([6, 15]), CustomValidators.equalTo(senha)]);
+    let telefone = new FormControl('', [Validators.required]);
+    let username = new FormControl('', [Validators.required]);
 
     this.cadastroForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       senha: senha,
-      senhaConfirmacao: senha
+      senhaConfirmacao: senha,
+      telefone: telefone,
+      UserName: username,
     });
   }
 
@@ -71,7 +75,7 @@ export class CadastroComponent extends FormBaseComponent implements OnInit, Afte
     if (this.cadastroForm.dirty && this.cadastroForm.valid) {
       this.usuario = Object.assign({}, this.usuario, this.cadastroForm.value);
 
-      this.contaService.registrarUsuario(this.usuario)
+      this.contaService.registrarUsuario({...this.usuario, UrlImagem: this.imageURL })
         .subscribe(
           sucesso => { this.processarSucesso(sucesso) },
           falha => { this.processarFalha(falha) }
@@ -98,11 +102,7 @@ export class CadastroComponent extends FormBaseComponent implements OnInit, Afte
   processarFalha(fail: any) {
     this.errors = fail.error.errors;
     this.toastr.error('Ocorreu um erro!', 'Opa :(');
-  }
-
-  imageURL: string = '';
-  uploadForm: FormGroup;
-  
+  }  
 
   showPreview(event: { target: HTMLInputElement; }) {
     if(event.target.files){
