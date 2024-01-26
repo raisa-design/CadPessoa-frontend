@@ -131,18 +131,21 @@
             </div>
           </div>
           <app-divider />
+
+          <h2 class="text-2xl">Endereço</h2>
+
           <!-- Linha -->
           <div *ngFor="let address of addressList">
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
               <!-- Input -->
               <div class="form-group">
-                <label class="control-label">Nome</label>
+                <label class="control-label">Logradouro</label>
                 <div>
                   <input
                     class="form-control"
-                    id="nome"
+                    id="logradouro"
                     type="text"
-                    placeholder="Nome (requerido)"
+                    placeholder="Logradouro"
                     [ngClass]="{ 'is-invalid': displayMessage.nome }"
                   />
                   <span class="text-danger" *ngIf="displayMessage.nome">
@@ -153,13 +156,13 @@
 
               <!-- Input -->
               <div class="form-group">
-                <label class="control-label">Sobrenome</label>
+                <label class="control-label">Número</label>
                 <div>
                   <input
                     class="form-control"
-                    id="sobreNome"
+                    id="numero"
                     type="text"
-                    placeholder="Sobrenome (requerido)"
+                    placeholder="Numero"
                     formControlName="sobreNome"
                     [ngClass]="{ 'is-invalid': displayMessage.sobreNome }"
                   />
@@ -171,15 +174,14 @@
 
               <!-- Input -->
               <div class="form-group">
-                <label class="control-label">Data de Nascimento</label>
+                <label class="control-label">Cep</label>
                 <div>
                   <input
                     class="form-control"
-                    id="dataNascimento"
-                    type="date"
-                    placeholder="Data de Nascimento (requerido)"
-                    formControlName="dataNascimento"
-                    [ngClass]="{ 'is-invalid': displayMessage.dataNascimento }"
+                    id="cep"
+                    type="text"
+                    placeholder="Cep"
+                    formControlName="cep"
                   />
                   <span
                     class="text-danger"
@@ -194,13 +196,13 @@
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
               <!-- Input -->
               <div class="form-group">
-                <label class="control-label">Nome</label>
+                <label class="control-label">Complemento</label>
                 <div>
                   <input
                     class="form-control"
-                    id="nome"
+                    id="complemento"
                     type="text"
-                    placeholder="Nome (requerido)"
+                    placeholder="Complemento"
                     [ngClass]="{ 'is-invalid': displayMessage.nome }"
                   />
                   <span class="text-danger" *ngIf="displayMessage.nome">
@@ -211,14 +213,32 @@
 
               <!-- Input -->
               <div class="form-group">
-                <label class="control-label">Sobrenome</label>
+                <label class="control-label">Cidade</label>
                 <div>
                   <input
                     class="form-control"
-                    id="sobreNome"
+                    id="cidade"
                     type="text"
-                    placeholder="Sobrenome (requerido)"
+                    placeholder="Cidade"
                     formControlName="sobreNome"
+                    [ngClass]="{ 'is-invalid': displayMessage.sobreNome }"
+                  />
+                  <span class="text-danger" *ngIf="displayMessage.sobreNome">
+                    <p [innerHTML]="displayMessage.sobreNome"></p>
+                  </span>
+                </div>
+              </div>
+
+               <!-- Input -->
+               <div class="form-group">
+                <label class="control-label">Estado</label>
+                <div>
+                  <input
+                    class="form-control"
+                    id="estado"
+                    type="text"
+                    placeholder="Estado"
+                    formControlName="estado"
                     [ngClass]="{ 'is-invalid': displayMessage.sobreNome }"
                   />
                   <span class="text-danger" *ngIf="displayMessage.sobreNome">
@@ -249,8 +269,8 @@
             </div>
 
           </div>
-
           <app-divider />
+          <h2 class="text-2xl">Contatos</h2>
           <!-- Linha -->
           <div *ngFor="let contact of contactList">
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
@@ -273,7 +293,7 @@
 
               <!-- Input -->
               <div class="form-group">
-                <label class="control-label">Sobrenome</label>
+                <label class="control-label">Contato</label>
                 <div>
                   <input
                     class="form-control"
@@ -291,7 +311,7 @@
 
               <!-- Input -->
               <div class="form-group">
-                <label class="control-label">Data de Nascimento</label>
+                <label class="control-label">Tipo contato</label>
                 <div>
                   <input
                     class="form-control"
@@ -309,46 +329,6 @@
                   </span>
                 </div>
               </div>
-            </div>
-            <!-- Linha -->
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
-              <!-- Input -->
-              <div class="form-group">
-                <label class="control-label">Nome</label>
-                <div>
-                  <input
-                    class="form-control"
-                    id="nome"
-                    type="text"
-                    placeholder="Nome (requerido)"
-                    [ngClass]="{ 'is-invalid': displayMessage.nome }"
-                  />
-                  <span class="text-danger" *ngIf="displayMessage.nome">
-                    <p [innerHTML]="displayMessage.nome"></p>
-                  </span>
-                </div>
-              </div>
-
-              <!-- Input -->
-              <div class="form-group">
-                <label class="control-label">Sobrenome</label>
-                <div>
-                  <input
-                    class="form-control"
-                    id="sobreNome"
-                    type="text"
-                    placeholder="Sobrenome (requerido)"
-                    formControlName="sobreNome"
-                    [ngClass]="{ 'is-invalid': displayMessage.sobreNome }"
-                  />
-                  <span class="text-danger" *ngIf="displayMessage.sobreNome">
-                    <p [innerHTML]="displayMessage.sobreNome"></p>
-                  </span>
-                </div>
-              </div>
-
-              <!-- Input -->
-        
             </div>
             <!-- Linha -->
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">

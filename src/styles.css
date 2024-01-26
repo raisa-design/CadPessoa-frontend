@@ -146,3 +146,10 @@ body {
   list-style-type: none;
   font-family: sans-serif;
 }
+
+button, [type='button'], [type='reset'], [type='submit'] {
+  -webkit-appearance: button;
+  background-color: transparent;
+  background-image: none;
+  height: 45px;
+}

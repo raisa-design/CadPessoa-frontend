@@ -100,6 +100,10 @@ export class CadastroComponent extends FormBaseComponent implements OnInit, Afte
     this.toastr.error('Ocorreu um erro!', 'Opa :(');
   }
 
+  imageURL: string = '';
+  uploadForm: FormGroup;
+  
+
   showPreview(event: { target: HTMLInputElement; }) {
     if(event.target.files){
       const file = event.target.files[0];
@@ -121,4 +125,10 @@ export class CadastroComponent extends FormBaseComponent implements OnInit, Afte
   removeImage(){
     this.imageURL = '';
   }
+
+
+  submit() {
+    console.log(this.uploadForm.value)
+  }
+
 }

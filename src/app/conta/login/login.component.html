@@ -1,18 +1,20 @@
-<div class="container main-container">
+
     <form novalidate (ngSubmit)="login()" [formGroup]="loginForm">
 
         <section class="w-full h-screen flex justify-center items-center">
-            <div class="flex gap-x-12 bg-stone-100 p-6 rounded-lg shadow-lg md:w-5/12 2xl:w-3/12  lg:w-12/12 w-12/12 flex-col-reverse md:flex-row">
+            <div class="flex gap-x-12 bg-stone-100 p-6 rounded-lg shadow-lg md:w-12/12 2xl:w-3/12  lg:w-12/12 w-12/12 flex-col-reverse md:flex-row">
                 <div class="flex flex-col gap-6 w-full md:w-1/2">
-                    <h1 class="text-3xl">
-                        Login de usuário
-                    </h1>
+                    <div class="text-center">
+                        <h1 class="text-3xl ">
+                            Login de usuário
+                        </h1>
+                    </div>
                     <div class="form-group">
                         <div class="col-md-12 lg-12">
                             <input class="form-control" id="email" type="text" placeholder="E-mail" formControlName="email" [ngClass]="{'is-invalid': displayMessage.email }" />
                             <span class="text-danger" *ngIf="displayMessage.email">
-                                            <p [innerHTML]="displayMessage.email"></p>
-                                        </span>
+                                <p [innerHTML]="displayMessage.email"></p>
+                            </span>
                         </div>
                     </div>
                     <div class="form-group">
@@ -24,10 +26,10 @@
                         </div>
                     </div>
                     <div class="flex justify-center items-center">
-                        <app-button text="Login" id="Login"  type="submit" type="submit"   />
+                        <app-button text="Login" id="login"  type="submit" type="submit"   />
                     </div>
                     <div class="flex justify-center items-center">
-                        <app-button text="Criar Conta" id="Login" [routerLink]="['/conta/cadastro']" />
+                        <button class="btn btn-success" text="Criar Conta" id="criar-conta" [routerLink]="['/conta/cadastro']"> Criar conta </button>
                     </div>
                     
                 </div>
@@ -38,10 +40,6 @@
         </section>  
         
     </form>
-</div>
-
-
-<a class="navbar-brand" [routerLink]="['/conta/cadastro']">Login</a>
 
 
 <!-- <section class="w-full h-screen flex justify-center items-center">
