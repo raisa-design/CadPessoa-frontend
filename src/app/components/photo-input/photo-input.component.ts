@@ -1,12 +1,11 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
-  selector: 'app-file-input',
-  standalone: true,
-  imports: [],
-  templateUrl: './file-input.component.html',
+  selector: 'app-photo-input',
+  templateUrl: './photo-input.component.html',
+  styleUrls: ['./photo-input.component.css']
 })
-export class FileInputComponent {
+export class PhotoInputComponent {
   @Input({required: true}) name!: string;
   @Output() changeFile: EventEmitter<any> = new EventEmitter<any>();
 

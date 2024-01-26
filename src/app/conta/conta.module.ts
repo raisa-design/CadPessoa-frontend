@@ -15,12 +15,14 @@ import { NarikCustomValidatorsModule } from '@narik/custom-validators';
 import { ContaGuard } from './services/conta.guard';
 import { InputComponent } from "../components/input/input.component";
 import { ButtonComponent } from "../components/button/button.component";
+import { PhotoInputComponent } from '../components/photo-input/photo-input.component';
 
 @NgModule({
     declarations: [
         ContaAppComponent,
         CadastroComponent,
-        LoginComponent
+        LoginComponent,
+        PhotoInputComponent
     ],
     providers: [
         ContaService,
@@ -35,7 +37,7 @@ import { ButtonComponent } from "../components/button/button.component";
         HttpClientModule,
         NarikCustomValidatorsModule,
         InputComponent,
-        ButtonComponent
+        ButtonComponent, 
     ]
 })
 export class ContaModule { }

@@ -9,10 +9,11 @@ import { Usuario } from '../models/usuario';
 import { ContaService } from '../services/conta.service';
 
 import { FormBaseComponent } from 'src/app/base-components/form-base.component';
+import { PhotoInputComponent } from 'src/app/components/photo-input/photo-input.component';
 
 @Component({
   selector: 'app-cadastro',
-  templateUrl: './cadastro.component.html'
+  templateUrl: './cadastro.component.html',
 })
 export class CadastroComponent extends FormBaseComponent implements OnInit, AfterViewInit {
 
@@ -21,6 +22,8 @@ export class CadastroComponent extends FormBaseComponent implements OnInit, Afte
   errors: any[] = [];
   cadastroForm: FormGroup;
   usuario: Usuario;
+  imageURL: string = '';
+  uploadForm: FormGroup;
 
   constructor(private fb: FormBuilder,
     private contaService: ContaService,
@@ -39,6 +42,11 @@ export class CadastroComponent extends FormBaseComponent implements OnInit, Afte
         rangeLength: 'A senha deve possuir entre 6 e 15 caracteres'
       }
     };
+
+    this.uploadForm = this.fb.group({
+      avatar: [null],
+      name: ['']
+    })
 
     super.configurarMensagensValidacaoBase(this.validationMessages);
   }
@@ -117,6 +125,7 @@ export class CadastroComponent extends FormBaseComponent implements OnInit, Afte
   removeImage(){
     this.imageURL = '';
   }
+
 
   submit() {
     console.log(this.uploadForm.value)

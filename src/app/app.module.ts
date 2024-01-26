@@ -19,7 +19,7 @@ export const httpInterceptorProviders = [
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
@@ -29,7 +29,7 @@ export const httpInterceptorProviders = [
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
     HttpClientModule,
-    InputComponent
+    InputComponent,
   ],
   providers: [
     httpInterceptorProviders
