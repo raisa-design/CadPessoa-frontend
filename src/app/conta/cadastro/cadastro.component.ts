@@ -91,4 +91,35 @@ export class CadastroComponent extends FormBaseComponent implements OnInit, Afte
     this.errors = fail.error.errors;
     this.toastr.error('Ocorreu um erro!', 'Opa :(');
   }
+
+  imageURL: string = '';
+  uploadForm: FormGroup;
+  
+
+  showPreview(event: { target: HTMLInputElement; }) {
+    if(event.target.files){
+      const file = event.target.files[0];
+      this.uploadForm.patchValue({
+        avatar: file
+      });
+      const avatar = this.uploadForm.get('avatar');
+      if(avatar){
+        avatar.updateValueAndValidity()
+        const reader = new FileReader();
+        reader.onload = () => {
+          this.imageURL = reader.result as string;
+        }
+        reader.readAsDataURL(file)
+      }
+    }
+  }
+
+  removeImage(){
+    this.imageURL = '';
+  }
+
+  submit() {
+    console.log(this.uploadForm.value)
+  }
+
 }
