@@ -56,13 +56,23 @@
                         </div>
                     </div>
                 </div>  
+
+                <div class="bg-white-500">
+                    <h1 class="text-3xl block md:hidden"> 
+                        Cadastrar Usuário
+                    </h1>
+                    <app-photo-input name="userimage" (changeFile)="showPreview($event)" *ngIf="!imageURL || imageURL === ''" />
+                    <div *ngIf="imageURL && imageURL !== ''" class="relative" >
+                        <button class="absolute -right-3 -top-3 hover:scale-125" (click)="removeImage()">
+                            <img src="/assets/close.png" height="32px" width="32px" />
+                        </button>
+                        <img [src]="imageURL" [alt]="uploadForm.value.name" class="min-w-60 h-64 rounded-lg">
+                    </div>
+                </div> 
               
             </div>
             
-        </section>  
-        <div class="form-group">
-            
-        </div>
+        </section> 
     </form>
 </div>
 
